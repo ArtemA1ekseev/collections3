@@ -3,7 +3,9 @@ import ProductRecipe.Product;
 import ProductRecipe.ProductList;
 import ProductRecipe.Recipe;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 
@@ -52,18 +54,49 @@ public class Main {
         ProductList productList = new ProductList();
         productList.addProduct(banana, 2);
         productList.addProduct(fish,3);
-        System.out.println(productList);
+        //System.out.println(productList);
 
         //Product banana2 = new Product("банан", 31.0f, 7);
         //productList.addProduct(banana2);
-        Recipe recipe = new Recipe("Каша", Set.of(banana, fish));
+        //Recipe recipe = new Recipe("Каша", Set.of(banana, fish));
 
         //_________________________Задание_3_________________________
 
         HashMap("str1", 4);
-        HashMap("str2", 4);
-        HashMap("str2", 4);
+        HashMap("str2", 3);
+        HashMap("str2", 2);
         HashMap("str2", 7);
+
+        //_________________________Д3_2_________________________
+
+        //_________________________Задание_1_________________________
+        HashMap<String, List<Integer>> hashMap = new HashMap<>();
+        HashMap<String, Integer> listHashMap = new HashMap<>();
+
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>(5);
+        for (int i = 0; i < 5; i++) {
+            list.add(new ArrayList());
+            list.get(i).add((int) (Math.random() * 1000));
+            list.get(i).add((int) (Math.random() * 1000));
+            list.get(i).add((int) (Math.random() * 1000));
+
+            hashMap.put("string" + Integer.toString(i), list.get(i));
+            System.out.println("string" + Integer.toString(i) + "->" + list.get(i));
+            listHashMap.put("string" + Integer.toString(i), list.get(i).get(0) + list.get(i).get(1) + list.get(i).get(2));
+        }
+        for (int i = 0; i < 5; i++) {
+            System.out.println("string" + Integer.toString(i) + " -> " + listHashMap.get("string" + Integer.toString(i)));
+        }
+
+        System.out.println();
+
+        //_________________________Задание_2_________________________
+        HashMap<Integer, String> integerStringHashMap = new HashMap<>();
+
+        for (int i = 1; i <= 10; i++) {
+            integerStringHashMap.put(i, ":string");
+        }
+        System.out.print(integerStringHashMap);
     }
 
     private static void HashMap(String line, int num) {
