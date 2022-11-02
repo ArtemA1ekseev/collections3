@@ -1,17 +1,12 @@
+import ProductRecipe.Recipe;
+import ProductRecipe.RecipeList;
 import homework1.PhoneBook;
 import ProductRecipe.Product;
 import ProductRecipe.ProductList;
-import ProductRecipe.Recipe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 
-
 public class Main {
-
-    public static HashMap<String, Integer> hashMap = new HashMap<>();
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
         phoneBook.addContact("Колесников Владимир", "+7 (921) 922-02-65");
@@ -52,62 +47,32 @@ public class Main {
         Product banana = new Product("банан", 50.0f, 2);
         Product fish = new Product("рыба", 134.0f, 1);
         ProductList productList = new ProductList();
-        productList.addProduct(banana, 2);
-        productList.addProduct(fish,3);
-        //System.out.println(productList);
+        productList.addProduct(banana);
+        productList.addProduct(fish);
+        Recipe spysha = new Recipe("Спущенка", Set.of(fish, banana));
+        RecipeList recipeList = new RecipeList();
+        recipeList.addRecipes(spysha, 3);
 
-        //Product banana2 = new Product("банан", 31.0f, 7);
-        //productList.addProduct(banana2);
-        //Recipe recipe = new Recipe("Каша", Set.of(banana, fish));
+        System.out.println();
+
 
         //_________________________Задание_3_________________________
 
-        HashMap("str1", 4);
-        HashMap("str2", 3);
-        HashMap("str2", 2);
-        HashMap("str2", 7);
+        WorkHashMap.getWorkHashMap("str1", 4);
+        WorkHashMap.getWorkHashMap("str2", 5);
+        WorkHashMap.getWorkHashMap("str3", 3);
+        WorkHashMap.getWorkHashMap("str2", 7);
 
-        //_________________________Д3_2_________________________
+        System.out.println();
 
-        //_________________________Задание_1_________________________
-        HashMap<String, List<Integer>> hashMap = new HashMap<>();
-        HashMap<String, Integer> listHashMap = new HashMap<>();
+        //________________________Задание_1_________________________
 
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>(5);
-        for (int i = 0; i < 5; i++) {
-            list.add(new ArrayList());
-            list.get(i).add((int) (Math.random() * 1000));
-            list.get(i).add((int) (Math.random() * 1000));
-            list.get(i).add((int) (Math.random() * 1000));
-
-            hashMap.put("string" + Integer.toString(i), list.get(i));
-            System.out.println("string" + Integer.toString(i) + "->" + list.get(i));
-            listHashMap.put("string" + Integer.toString(i), list.get(i).get(0) + list.get(i).get(1) + list.get(i).get(2));
-        }
-        for (int i = 0; i < 5; i++) {
-            System.out.println("string" + Integer.toString(i) + " -> " + listHashMap.get("string" + Integer.toString(i)));
-        }
+        WorkHashMap.getWorkHashMap2();
 
         System.out.println();
 
         //_________________________Задание_2_________________________
-        HashMap<Integer, String> integerStringHashMap = new HashMap<>();
 
-        for (int i = 1; i <= 10; i++) {
-            integerStringHashMap.put(i, ":string");
-        }
-        System.out.print(integerStringHashMap);
-    }
-
-    private static void HashMap(String line, int num) {
-
-        String Result = String.valueOf((hashMap.get(line)));
-        if (Result == "null") {
-            hashMap.put(line, num);
-        } else if (Integer.parseInt(Result) == num) {
-            throw new IllegalArgumentException("Повтор ключ-значения");
-        } else {
-            hashMap.put(line, num);
-        }
+        WorkHashMap.getIntegerStringHashMap();
     }
 }

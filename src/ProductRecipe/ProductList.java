@@ -4,14 +4,42 @@ import java.util.*;
 
 public final class ProductList {
 
-    final private Map<Product, Integer> products = new HashMap<>();
+    private final Set<Product> products = new HashSet<>();
 
-    public void addProduct(Product product, Integer number) {
-        if (products.containsKey(product)) {
+    public void addProduct(Product product) {
+        if (products.contains(product)) {
             throw new ProductAlreadyExistsException();
-        } else if (number <= 0){
-            number = 1;
+        } else {
+            this.products.add(product);
         }
-        this.products.put(product, number);
+    }
+
+    public void checkProduct(String name) {
+        for (Product product : this.products) {
+            if (product.getNameProduct().equals(name)) {
+                product.setChecked();
+                break;
+            }
+        }
+    }
+
+    public void removeProduct(String name) {
+        Iterator<Product> productIterator = this.products.iterator();
+        while (productIterator.hasNext()) {
+            if (productIterator.next().getNameProduct().equals(name)) {
+                productIterator.remove();
+                break;
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Список продуктов:").append('\n');
+        for (Product product : this.products) {
+            stringBuilder.append(product).append('\n');
+        }
+        return stringBuilder.toString();
     }
 }
